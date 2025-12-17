@@ -1,45 +1,56 @@
 /* ESTILOS GERAIS */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f2f5;
     color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 10px; /* Margem menor para celular */
 }
 
 .container {
     max-width: 900px;
     margin: 0 auto;
     background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 header {
     text-align: center;
     border-bottom: 2px solid #4CAF50;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 header h1 {
     margin: 0;
     color: #2E7D32;
+    font-size: 1.5rem; /* Fonte um pouco menor */
 }
 
 header p {
     color: #666;
+    font-size: 0.9rem;
     font-style: italic;
+    margin-top: 5px;
 }
 
+/* Informações do Topo */
 .info-header {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap; /* Permite quebra de linha */
+    gap: 15px;
     margin-bottom: 20px;
     background: #e8f5e9;
     padding: 15px;
     border-radius: 5px;
+}
+
+.field-group {
+    flex: 1;
+    min-width: 200px; /* Garante tamanho mínimo no celular */
 }
 
 .input-line {
@@ -47,13 +58,15 @@ header p {
     background: transparent;
     font-size: 16px;
     border-bottom: 1px dotted #333;
-    width: 200px;
+    width: 100%; /* Ocupa todo espaço disponível */
+    padding: 5px 0;
 }
 
+/* Grid Principal */
 .content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr; /* Lado a lado no PC */
+    gap: 30px;
     align-items: start;
 }
 
@@ -65,119 +78,182 @@ header p {
 .subtitle {
     font-size: 0.9em;
     color: #666;
+    margin-bottom: 15px;
 }
 
 .control-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Mais espaço para o dedo não esbarrar no de baixo */
 }
 
 .control-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-.control-group input[type="range"] {
+/* Estilo do Slider (Range) melhorado para touch */
+input[type=range] {
+    -webkit-appearance: none;
     width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px; /* Bolinha maior */
+    width: 24px;
+    border-radius: 50%;
+    background: #4CAF50;
     cursor: pointer;
+    margin-top: -10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 5px;
 }
 
 .score-display {
     color: #2E7D32;
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 /* Área do Gráfico */
+.chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .chart-container {
     position: relative;
     width: 100%;
+    max-width: 400px; /* Limita o tamanho para não ficar gigante */
 }
 
-/* Área de Perguntas */
+/* Área de Texto */
 .reflection-section {
-    margin-top: 40px;
+    margin-top: 30px;
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
 
 .question-box {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .question-box label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .question-box textarea {
     width: 100%;
-    height: 80px;
-    padding: 10px;
+    height: 100px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px; /* Bordas mais arredondadas */
     font-family: inherit;
+    font-size: 16px; /* Letra maior para celular */
+    box-sizing: border-box; /* Garante que o padding não estoure a largura */
 }
 
 .signature-box {
-    margin-top: 30px;
-    border-top: 1px dashed #999;
+    margin-top: 40px;
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 }
 
-/* Botão de Imprimir */
+.sig-line {
+    text-align: center;
+    flex: 1;
+}
+
+.sig-line span {
+    display: block;
+    font-size: 0.9rem;
+}
+
+/* Botão */
 .btn-print {
     display: block;
     width: 100%;
-    padding: 15px;
+    padding: 18px; /* Botão mais alto para toque */
     background-color: #2E7D32;
     color: white;
     border: none;
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background 0.3s;
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.btn-print:hover {
+.btn-print:active {
     background-color: #1b5e20;
+    transform: scale(0.98);
 }
 
-/* CONFIGURAÇÃO DE IMPRESSÃO */
-@media print {
-    body {
-        background: white;
-        padding: 0;
-    }
-    .container {
-        box-shadow: none;
-        max-width: 100%;
-        padding: 0;
-    }
-    .btn-print {
-        display: none;
-    }
-    .content-grid {
-        display: block;
-        page-break-inside: avoid;
-    }
-    .chart-container {
-        max-height: 400px;
-        margin: 0 auto;
-    }
-    textarea {
-        border: 1px solid #000;
-    }
-}
-
+/* --- REGRAS ESPECÍFICAS PARA CELULAR (MEDIA QUERIES) --- */
 @media (max-width: 768px) {
     .content-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Empilha tudo em 1 coluna */
+        gap: 20px;
     }
+
+    .info-header {
+        flex-direction: column; /* Empilha os campos do topo */
+        gap: 10px;
+    }
+    
+    .field-group {
+        width: 100%;
+    }
+
+    /* Inverte a ordem: Gráfico primeiro, depois controles (opcional, mas visualmente legal) */
+    /* Se preferir os controles primeiro, apague as 3 linhas abaixo */
+    .controls { order: 2; }
+    .chart-wrapper { order: 1; margin-bottom: 20px; }
+
+    .signature-box {
+        flex-direction: column; /* Assinaturas uma embaixo da outra no celular */
+        gap: 40px;
+        align-items: center;
+    }
+    
+    .sig-line {
+        width: 80%;
+    }
+}
+
+/* IMPRESSÃO (Mantém limpo mesmo se estiver no celular) */
+@media print {
+    body { padding: 0; background: white; }
+    .container { box-shadow: none; padding: 0; max-width: 100%; }
+    .btn-print { display: none; }
+    
+    .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Força lado a lado na impressão */
+        gap: 20px;
+    }
+    .controls { order: 1; }
+    .chart-wrapper { order: 2; }
+    
+    .signature-box {
+        flex-direction: row; /* Assinaturas lado a lado na impressão */
+        margin-top: 50px;
+    }
+    
+    textarea { border: 1px solid #999; resize: none; }
 }
