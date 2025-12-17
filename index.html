@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roda da Vida - PAS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Roda da Vida - PAS Mobile</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,81 +11,93 @@
 
 <div class="container">
     <header>
-        <h1>Plano de Atendimento Singular (PAS)</h1>
-        <p>"Ensina-nos a contar os nossos dias para que alcancemos coração sábio." (Salmos 90:12)</p>
+        <h1>PAS - Plano de Atendimento Singular</h1>
+        <p>"Ensina-nos a contar os nossos dias..." (Sl 90:12)</p>
     </header>
 
     <div class="info-header">
-        <div><strong>Acolhido:</strong> <input type="text" placeholder="Nome do acolhido" class="input-line"></div>
-        <div><strong>Data:</strong> <span id="dataAtual"></span></div>
-        <div><strong>Responsável:</strong> <input type="text" placeholder="Nome do coordenador" class="input-line"></div>
+        <div class="field-group">
+            <strong>Acolhido:</strong> 
+            <input type="text" placeholder="Nome do acolhido" class="input-line">
+        </div>
+        <div class="field-group">
+            <strong>Data:</strong> <span id="dataAtual"></span>
+        </div>
+        <div class="field-group">
+            <strong>Responsável:</strong> 
+            <input type="text" placeholder="Nome do coordenador" class="input-line">
+        </div>
     </div>
 
     <div class="content-grid">
         <div class="controls">
-            <h3>Avaliação das Áreas (1 a 10)</h3>
-            <p class="subtitle">Arraste para definir a nota atual.</p>
+            <h3>Avaliação (1 a 10)</h3>
+            <p class="subtitle">Arraste a bolinha para dar a nota.</p>
 
-            <div class="control-group">
-                <label>Espiritualidade <span id="val0" class="score-display">5</span></label>
-                <input type="range" min="1" max="10" value="5" oninput="updateChart(0, this.value)">
-            </div>
+            <div class="slider-container">
+                <div class="control-group">
+                    <label>Espiritualidade <span id="val0" class="score-display">5</span></label>
+                    <input type="range" min="1" max="10" value="5" oninput="updateChart(0, this.value)">
+                </div>
 
-            <div class="control-group">
-                <label>Saúde Física <span id="val1" class="score-display">5</span></label>
-                <input type="range" min="1" max="10" value="5" oninput="updateChart(1, this.value)">
-            </div>
+                <div class="control-group">
+                    <label>Saúde Física <span id="val1" class="score-display">5</span></label>
+                    <input type="range" min="1" max="10" value="5" oninput="updateChart(1, this.value)">
+                </div>
 
-            <div class="control-group">
-                <label>Família <span id="val2" class="score-display">5</span></label>
-                <input type="range" min="1" max="10" value="5" oninput="updateChart(2, this.value)">
-            </div>
+                <div class="control-group">
+                    <label>Família <span id="val2" class="score-display">5</span></label>
+                    <input type="range" min="1" max="10" value="5" oninput="updateChart(2, this.value)">
+                </div>
 
-            <div class="control-group">
-                <label>Trabalho/Estudo <span id="val3" class="score-display">5</span></label>
-                <input type="range" min="1" max="10" value="5" oninput="updateChart(3, this.value)">
-            </div>
+                <div class="control-group">
+                    <label>Trabalho/Estudo <span id="val3" class="score-display">5</span></label>
+                    <input type="range" min="1" max="10" value="5" oninput="updateChart(3, this.value)">
+                </div>
 
-            <div class="control-group">
-                <label>Emoções <span id="val4" class="score-display">5</span></label>
-                <input type="range" min="1" max="10" value="5" oninput="updateChart(4, this.value)">
-            </div>
+                <div class="control-group">
+                    <label>Emoções <span id="val4" class="score-display">5</span></label>
+                    <input type="range" min="1" max="10" value="5" oninput="updateChart(4, this.value)">
+                </div>
 
-            <div class="control-group">
-                <label>Lazer/Social <span id="val5" class="score-display">5</span></label>
-                <input type="range" min="1" max="10" value="5" oninput="updateChart(5, this.value)">
+                <div class="control-group">
+                    <label>Lazer/Social <span id="val5" class="score-display">5</span></label>
+                    <input type="range" min="1" max="10" value="5" oninput="updateChart(5, this.value)">
+                </div>
             </div>
         </div>
 
-        <div class="chart-container">
-            <canvas id="rodaVidaChart"></canvas>
+        <div class="chart-wrapper">
+            <div class="chart-container">
+                <canvas id="rodaVidaChart"></canvas>
+            </div>
         </div>
     </div>
 
     <div class="reflection-section">
-        <h3>Compromisso e Metas</h3>
+        <h3>Metas e Compromisso</h3>
         
         <div class="question-box">
-            <label>1. Olhando para a roda, qual área precisa de mais atenção urgente?</label>
-            <textarea placeholder="Escreva aqui..."></textarea>
+            <label>1. Área que precisa de atenção urgente:</label>
+            <textarea placeholder="Toque para escrever..."></textarea>
         </div>
 
         <div class="question-box">
-            <label>2. Defina uma meta prática para esta semana:</label>
-            <textarea placeholder="Ex: Ler 1 capítulo do livro, Ligar para minha mãe, Fazer caminhada..."></textarea>
+            <label>2. Meta prática para esta semana:</label>
+            <textarea placeholder="Ex: Ler a Bíblia, ligar para mãe..."></textarea>
         </div>
 
         <div class="signature-box">
             <div class="sig-line">
-                <span>__________________________<br>Assinatura do Acolhido</span>
+                <span>_______________________<br>Acolhido</span>
             </div>
             <div class="sig-line">
-                <span>__________________________<br>Coordenação</span>
+                <span>_______________________<br>Coordenação</span>
             </div>
         </div>
     </div>
 
-    <button class="btn-print" onclick="window.print()">🖨️ IMPRIMIR / SALVAR PDF</button>
+    <button class="btn-print" onclick="window.print()">🖨️ SALVAR PDF / IMPRIMIR</button>
 </div>
 
 <script src="script.js"></script>
